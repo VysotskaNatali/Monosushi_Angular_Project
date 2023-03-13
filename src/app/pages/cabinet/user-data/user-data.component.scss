@@ -1,0 +1,74 @@
+@import "../../../shared/styles/base";
+@import "../../../shared/styles/mixins/media";
+@import "../../../shared/styles/variables";
+@import "../../../shared/styles/theme-material";
+
+.header {
+  display: flex;
+  margin: 15px 0;
+  width: 100%;
+  &__number {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 900;
+    background-color: $mainCol;
+    text-align: center;
+    line-height: 25px;
+  }
+  h2 {
+    width: 95%;
+    line-height: 25px;
+    margin-left: 10px;
+    font-size: 22px;
+    @include respond(mobile) {
+      font-size: 18px;
+    }
+  }
+}
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 60%;
+  margin: 10px auto;
+  @include respond(tablet) {
+    width: 75%;
+    margin: 10px auto;
+  }
+  @include respond(mobile) {
+    max-width: 400px;
+    width: 90%;
+    margin: 10px auto;
+  }
+}
+.form-group {
+  width: 100%;
+}
+.form-group-half {
+  width: 49%;
+  @include respond(mobile) {
+    width: 100%;
+  }
+}
+.mat-form-field {
+  width: 100%;
+}
+.addAddress {
+  width: 200px;
+  height: 60px;
+  font-size: 18px;
+  margin: 15px 0;
+  @extend %btn__admin;
+  @include respond(mobile) {
+    width: 150px;
+    height: 40px;
+    font-size: 14px;
+    margin: 5px 0;
+  }
+}
+.saveAddress {
+  @extend .addAddress;
+  @extend %btnBlue;
+}

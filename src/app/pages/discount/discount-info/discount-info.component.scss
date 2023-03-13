@@ -1,0 +1,50 @@
+@import "../../../shared/styles/variables";
+@import "../../../shared/styles/base";
+@import "../../../shared/styles/mixins/media";
+
+.info {
+  margin: 150px auto;
+  width: 60%;
+  @include respond(tablet) {
+    width: 80%;
+  }
+  @include respond(mobile) {
+    margin: 100px auto 50px;
+    width: 90%;
+  }
+  &__title {
+    cursor: pointer;
+    width: 100%;
+    height: 200px;
+    background-color: $mainCol;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: bolder;
+    color: $darkText;
+    h1 {
+      width: 60%;
+      border-top: 5px solid $darkText;
+      padding: 10px 0;
+      text-align: center;
+      @include respond(tablet) {
+        font-size: 35px;
+      }
+      @include respond(mobile) {
+        font-size: 25px;
+      }
+    }
+  }
+  p {
+    margin: 15px;
+    width: 90%;
+    line-height: 40px;
+    color: $lightText;
+    @include respond(mobile) {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}

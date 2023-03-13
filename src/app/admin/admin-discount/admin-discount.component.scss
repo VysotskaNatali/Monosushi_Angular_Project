@@ -1,0 +1,120 @@
+@import "../../shared/styles/variables";
+@import "../../shared/styles/base";
+
+.action__btn {
+  @extend %btn__admin;
+  margin: 0 15px;
+  @include respond(mobile) {
+    margin: 15px 0;
+  }
+}
+.table {
+  margin-top: 50px;
+  width: 100%;
+  border-bottom: 2px solid $lighterBorder;
+  @include respond(mobile) {
+    font-size: 14px;
+    margin-top: 4px;
+  }
+  img {
+    width: 150px;
+    @include respond(mobile) {
+      width: 80px;
+    }
+  }
+  &__btn {
+    width: 60%;
+    border: 2px solid transparent;
+    background-color: transparent;
+    color: $mainCol;
+    text-align: start;
+    @include respond(mobile) {
+      font-size: 14px;
+    }
+  }
+}
+.mobileNone {
+  @include respond(mobile) {
+    display: none;
+  }
+}
+th,
+td {
+  border-bottom: 2px solid $lighterBorder;
+  padding: 20px;
+  color: $darkText;
+  text-align: start;
+  text-align: start;
+  @include respond(mobile) {
+    padding: 5px;
+  }
+}
+td {
+  width: 16%;
+}
+.form {
+  width: 60%;
+  margin-top: 50px;
+  &__input {
+    width: 48%;
+    height: 60px;
+    margin-right: 2%;
+    @extend %BORDER;
+    @include respond(mobile) {
+      width: 100%;
+      height: 35px;
+      border-radius: 5px;
+      margin: 15px 0;
+    }
+  }
+  &__textarea {
+    width: 98%;
+    height: 100px;
+    margin: 20px 0;
+    @extend %BORDER;
+  }
+  &__file {
+    width: 98%;
+    height: 50px;
+    @extend %BORDER;
+    margin: 25px 0;
+    @include respond(mobile) {
+      width: 100%;
+      height: 35px;
+      border-radius: 5px;
+      margin: 15px 0;
+    }
+  }
+  &__btn {
+    width: 200px;
+    height: 50px;
+    @extend %btnBlue;
+    @include respond(mobile) {
+      width: 140px;
+      height: 30px;
+      font-size: 14px;
+      margin: 15px 5px;
+    }
+  }
+  &__imgAdd {
+    width: 150px;
+    margin: 15px;
+    margin-right: 60%;
+    @include respond(mobile) {
+      width: 100px;
+    }
+  }
+  &__deleteImg {
+    width: 200px;
+    height: 50px;
+    @extend %btnBlue;
+    background-color: $redCol;
+    border-color: $redCol;
+    @include respond(mobile) {
+      width: 140px;
+      height: 30px;
+      font-size: 14px;
+      margin: 5px;
+    }
+  }
+}

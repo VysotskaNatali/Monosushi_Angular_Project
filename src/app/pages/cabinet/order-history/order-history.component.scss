@@ -1,0 +1,36 @@
+@import "../../../shared/styles/variables";
+@import "../../../shared/styles/base";
+@import "../../../shared/styles/mixins/media";
+
+.table {
+  margin-top: 50px 0;
+  width: 98%;
+  border-bottom: 2px solid $lighterBorder;
+  @include respond(tablet) {
+    font-size: 16px;
+  }
+
+  @include respond(mobile) {
+    font-size: 14px;
+    margin-top: 4px;
+  }
+}
+th,
+td {
+  border-bottom: 2px solid $lighterBorder;
+  padding: 20px;
+  color: $darkText;
+  text-align: center;
+  align-items: center;
+  @include respond(mobile) {
+    padding: 5px;
+  }
+}
+.border {
+  border-top: 3px solid $mainCol;
+}
+.hide {
+  @include respond(tablet) {
+    display: none;
+  }
+}

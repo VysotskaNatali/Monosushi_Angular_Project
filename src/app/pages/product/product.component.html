@@ -1,0 +1,50 @@
+<h1 class="header">Продукти</h1>
+
+<ul class="productList" *ngIf="categoryName ==='roli'|| categoryName==='setu'">
+    <li class="productList__item menu-active">Всі</li>
+    <li class="productList__item"><a [routerLink]="[ '/product' ]"
+            routerLinkActive="route-active">Філадельфія</a></li>
+    <li class="productList__item"><a [routerLink]="[ '/product' ]"
+            routerLinkActive="route-active">Каліфорнія</a></li>
+    <li class="productList__item"><a [routerLink]="[ '/product' ]"
+            routerLinkActive="route-active">Запечені</a></li>
+    <li class="productList__item"><a [routerLink]="[ '/product' ]"
+            routerLinkActive="route-active">Фірмові</a></li>
+    <li class="productList__item"><a [routerLink]="[ '/product' ]"
+            routerLinkActive="route-active">Макі</a></li>
+    <li class="productList__item"><a [routerLink]="[ '/product' ]"
+            routerLinkActive="route-active">Преміум</a></li>
+</ul>
+
+
+<div class="userProduct">
+    <div class="userProduct__block" *ngFor="let product of userProducts">
+
+        <img [routerLink]="['/product/'+product.category.path, product.id ]"
+            class="userProduct__block__img" [src]="product.imagePath"
+            [alt]="product.name">
+        <div>
+            <div class="userProduct__block__text" [routerLink]="[
+                '/product/'+product.category, product.id ]">
+                <h2 class="userProduct__block__text__name">{{product.name}}</h2>
+                <span class="userProduct__block__text__description">{{product.description}}</span>
+                <span class="userProduct__block__text__weight">{{product.weight
+                    }} <span>г</span></span>
+            </div>
+
+            <div class="userProduct__block__price">
+                <p class="userProduct__block__price__text">{{product.price *
+                    product.count}} <span>грн</span></p>
+
+                <div class="userProduct__block__price__count">
+                    <button (click)="productCount(product, true)"
+                        class="userProduct__block__price__count__plus">+</button>
+                    <span class="userProduct__block__price__count__num">{{product.count}}</span>
+                    <button (click)="productCount(product, false)"
+                        class="userProduct__block__price__count__min">-</button>
+                    <button (click)="addToBasket(product)"
+                        class="userProduct__block__price__count__btn">Замовити</button>
+                </div>
+            </div>
+        </div>
+    </div>

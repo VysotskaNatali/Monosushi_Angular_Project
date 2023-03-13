@@ -1,0 +1,15 @@
+<div class="box"></div>
+<div class="auth">
+     <form class="form" [formGroup]="authForm" (ngSubmit)="loginUser()"> 
+    
+        <input formControlName="email"
+            class="form__input" type="text" placeholder="email">
+
+        <input formControlName="password"
+            class="form__input" type="password" placeholder="password">
+
+        <button  type="submit" [disabled]="authForm.invalid"
+            class="form__btn"> login </button>
+
+    </form>
+</div>

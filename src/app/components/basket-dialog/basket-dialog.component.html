@@ -1,0 +1,44 @@
+<div class="basket">
+    <button class="closeForm" mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+    </button>
+    <div class="basket__product"*ngIf="basketArray.length> 0">
+
+        <mat-grid-list cols="14" rowHeight="100px" *ngFor="let product of
+            basketArray">
+
+            <mat-grid-tile colspan="3"><img [routerLink]="[ '/product/'+
+                    product.category.path,product.id ]"
+                    [src]="product.imagePath" alt="product.name"></mat-grid-tile>
+            <mat-grid-tile colspan="4">{{product.name}}</mat-grid-tile>
+            <mat-grid-tile colspan="3">
+                <div class="basket__product__count">
+                    <button (click)="productCount(product, true)"
+                        class="basket__product__count__plus">+</button>
+                    <span class="basket__product__count__num">{{product.count}}</span>
+                    <button (click)="productCount(product, false)"
+                        class="basket__product__count__min">-</button>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="2"><p>{{product.count*product.price}} грн</p></mat-grid-tile>
+            <mat-grid-tile colspan="1"> <button mat-icon-button
+                    (click)="deleteBasketProduct(product)">
+                    <mat-icon>delete</mat-icon></button>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+
+    <div *ngIf="basketArray.length <= 0" class="basket__zero">
+        <img src="https://firebasestorage.googleapis.com/v0/b/mono-sushi-40aba.appspot.com/o/monoImage%2FbasketZero.svg?alt=media&token=abd5413e-617b-4d8c-95cf-f17a1235f21e" alt="ZERO">
+        <h1 class="basket__zero__text">кошик порожній</h1>
+        <button class="basket__zero__btn" [routerLink]="[ '/product/roli']"
+            mat-dialog-close>Перейти до каталогу</button>
+    </div>
+    <div class="basket__order">
+        <div class="basket__order__sum">
+            <p>Cума: <span>{{total}}</span> грн</p>
+        </div>
+        <button type="button" (click)="orderProduct()" mat-dialog-close
+            class="basket__order__btn" [disabled]="basketArray.length <= 0">Замовити</button>
+    </div>
+</div>

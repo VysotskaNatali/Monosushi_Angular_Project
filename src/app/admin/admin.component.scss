@@ -1,0 +1,78 @@
+@import "../shared/styles/variables";
+@import "../shared/styles/base";
+@import "../shared/styles/mixins/media";
+
+.admin {
+  display: flex;
+  justify-content: space-between;
+  margin: 150px 25px;
+  @include respond(mobile) {
+    margin: 130px 5px 0 5px;
+    flex-direction: column;
+  }
+  &__side {
+    width: 200px;
+    @include respond(tablet) {
+      width: 150px;
+    }
+    @include respond(mobile) {
+      width: 360px;
+      display: flex;
+      justify-content: space-between;
+    }
+    &__btn {
+      width: 150px;
+      height: 50px;
+      @extend %btnBlue;
+
+      @include respond(tablet) {
+        width: 100px;
+        height: 40px;
+        font-size: 18px;
+      }
+      @include respond(mobile) {
+        width: 70px;
+        height: 30px;
+        font-size: 15px;
+        margin: -5px 5px;
+      }
+    }
+    
+  }
+  &__main {
+    width: 80%;
+    @include respond(mobile) {
+      width: 95%;
+      margin: 10px auto;
+    }
+  }
+}
+li {
+  width: 200px;
+  list-style-type: none;
+  color: $lightText;
+  font-size: 25px;
+  border: 1px solid $lighterBorder;
+  text-align: center;
+  padding: 35px 10px;
+  @include respond(tablet) {
+    width: 150px;
+    font-size: 18px;
+    padding: 23px 5px;
+  }
+  @include respond(mobile) {
+    width: 90px;
+    font-size: 14px;
+    padding: 5px;
+  }
+}
+ul li {
+  @include respond(mobile) {
+    display: inline;
+  }
+}
+.route-active {
+  border-bottom: 5px solid $mainCol;
+  color: $darkText;
+  font-weight: bolder;
+}

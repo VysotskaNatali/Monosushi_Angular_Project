@@ -1,0 +1,34 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th class="hide" scope="col">№ Замовлення</th>
+            <th class="hide" scope="col" colspan="2">Дата та час</th>
+            <th scope="col" colspan="2">Адреса</th>
+            <th scope="col">Сума</th>
+            <th scope="col">Статус</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let item of table">
+        <tr class="border">
+            <td class="hide" scope="col">{{item.num}}</td>
+            <td class="hide" scope="col" colspan="2">{{item.data}}</td>
+            <td scope="col" colspan="2">{{item.address}}</td>
+            <td scope="col">{{item.sum}}</td>
+            <td scope="col" [style.color]="item.status ? 'green' : 'red'">
+                &#x2022; {{item.status?'Виконано':'Скасовано'}}</td>
+            <td scope="col">
+                <button mat-button color="primary">Повторити</button>
+            </td>
+        </tr>
+        <tr>
+            <td class="hide"></td>
+            <td class="hide" colspan="2"></td>
+            <td colspan="2">{{item.product}}</td>
+            <td>{{item.count}}</td>
+            <td></td>
+            <td></td>
+
+        </tr>
+    </tbody>
+</table>

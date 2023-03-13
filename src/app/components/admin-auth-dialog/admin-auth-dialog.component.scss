@@ -1,0 +1,43 @@
+@import "../../shared/styles/variables";
+@import "../../shared/styles/base";
+@import "../../shared/styles/mixins/media";
+.box {
+  height: 500px;
+}
+.auth {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $darkShadow;
+}
+.form {
+  width: 500px;
+  min-height: 400px;
+  margin: 200px auto;
+  padding: 25px;
+  background-color: $body;
+  border-radius: 10px;
+  @include respond(mobile) {
+    width: 90%;
+  }
+  &__input {
+    width: 100%;
+    height: 60px;
+    margin: 15px 0;
+    @extend %BORDER;
+    @include respond(mobile) {
+      height: 40px;
+    }
+  }
+  &__btn {
+    width: 100%;
+    height: 60px;
+    margin: 25px 0;
+    @extend %btnBlue;
+    @include respond(mobile) {
+      height: 40px;
+    }
+  }
+}

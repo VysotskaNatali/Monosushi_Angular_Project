@@ -1,0 +1,151 @@
+@import "../styles/mixins/media";
+
+$body: rgb(242, 246, 250);
+$white: rgb(255, 255, 255);
+$mainCol: #91c4f0;
+$scroll: #dae8f5;
+$lightText: #707070;
+$lightBorder: #bdbbbb;
+$lighterBorder: #d6d1d1a9;
+$darkText: #252525;
+$darkShadow: #0303036b;
+$greenText: #27ae60;
+$yellowText: #f2c94c;
+$redCol: #eb2020;
+
+//Amimation border
+%border {
+  border: 2px solid transparent;
+  border-radius: 5px;
+
+  &:hover {
+    cursor: pointer;
+    animation: drawborder 500ms linear forwards;
+  }
+}
+@keyframes drawborder {
+  25% {
+    border-top-color: $mainCol;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  50% {
+    border-top-color: $mainCol;
+    border-right-color: $mainCol;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  75% {
+    border-top-color: $mainCol;
+    border-right-color: $mainCol;
+    border-bottom-color: $mainCol;
+    border-left-color: transparent;
+  }
+  100% {
+    border-color: $mainCol;
+  }
+}
+//----End Amimation border
+
+%logoHeader {
+  border-top: 7px solid $mainCol;
+  margin: 140px auto 20px;
+  font-size: 40px;
+  font-weight: bolder;
+  padding: 10px 5px;
+  text-align: center;
+  @include respond(mobile) {
+    font-size: 25px;
+    margin-top: 100px;
+  }
+}
+
+%btn__admin {
+  cursor: pointer;
+  width: 250px;
+  height: 50px;
+  border: 3px solid $mainCol;
+  border-radius: 5px;
+  background-color: $body;
+  font-size: 18px;
+  font-weight: bold;
+  color: $darkText;
+  &:hover {
+    background-color: $mainCol;
+  }
+  @include respond(tablet) {
+    width: 200px;
+    height: 40px;
+    font-size: 16px;
+  }
+  @include respond(mobile) {
+    width: 140px;
+    height: 30px;
+    font-size: 14px;
+  }
+}
+
+%BORDER {
+  padding: 10px 20px;
+  border: 1px solid $lightBorder;
+  outline: none;
+  border-radius: 10px;
+  color: $lightText;
+  font-size: 18px;
+  @include respond(mobile) {
+    border-radius: 15px;
+    font-size: 14px;
+    padding: 5px 20px;
+  }
+  &:focus {
+    border: 2px solid $mainCol;
+    box-shadow: 0 0 5px 1px $mainCol;
+  }
+}
+
+%btnBlue {
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 25px;
+  border: 4px solid $mainCol;
+  background-color: $mainCol;
+  font-size: 25px;
+  font-weight: bolder;
+  color: $darkText;
+
+  &:hover {
+    background-color: $body;
+    color: $lightText;
+  }
+}
+
+%btn__plus {
+  width: 25px;
+  height: 40px;
+  outline: none;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid $lighterBorder;
+  font-size: 18px;
+  font-weight: bolder;
+  background-color: $white;
+  &:hover {
+    background-color: $mainCol;
+  }
+}
+%btn__min {
+  @extend %btn__plus;
+  border-radius: 0 5px 5px 0;
+  margin-right: 10px;
+  font-size: 22px;
+}
+%btn__num {
+  width: 25px;
+  height: 40px;
+  border: 1px solid $lighterBorder;
+  font-size: 18px;
+  font-weight: bolder;
+  display: block;
+  text-align: center;
+  line-height: 40px;
+}

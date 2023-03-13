@@ -1,0 +1,104 @@
+@import "../../shared/styles/variables";
+@import "../../shared/styles/base";
+@import "../../shared/styles/mixins/media";
+.footers {
+  width: 100%;
+  margin: 150px 0 50px 0;
+  min-height: 138px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-top: 5px solid $mainCol;
+  @include respond(tablet) {
+    margin-bottom: 100px;
+  }
+  @include respond(mobile) {
+    margin-top: 20px;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
+.logo {
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 10px;
+  img {
+    width: 120px;
+  }
+  &__text {
+    width: 122px;
+    font-size: 12px;
+    color: $lightText;
+    @include respond(mobile) {
+      margin: 15px;
+    }
+  }
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 290px;
+  padding: 20px 0;
+  margin: 0 10%;
+  &__li {
+    display: inline-block;
+    margin: 10px 10px;
+  }
+  &__li a {
+    text-decoration: none;
+    color: $darkText;
+    font-weight: 100;
+    &:hover {
+      color: $mainCol;
+    }
+  }
+  &__img {
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
+  }
+  @include respond(mobile) {
+    width: 330px;
+    margin: 0 -20px;
+  }
+}
+.footer {
+  width: 280px;
+  margin: 20px 0 10px 0;
+  text-align: center;
+  font-size: 14px;
+  &__bold {
+    font-weight: bold;
+    color: $darkText;
+    margin-bottom: 5px;
+  }
+  &__light {
+    font-weight: 100;
+    color: $lightText;
+  }
+  &__social {
+    margin-top: 25px;
+  }
+  .uil {
+    background-color: $mainCol;
+    margin: 0 3px;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 8px;
+  }
+  @include respond(tablet) {
+    width: 30%;
+  }
+  @include respond(mobile) {
+    width: 300px;
+  }
+  P {
+    @include respond(mobile) {
+      font-size: 14px;
+    }
+  }
+}

@@ -1,0 +1,85 @@
+<div class="header">
+    <div class="logo" [routerLink]="[ '/' ]">
+        <div class="logo__img"><img src="https://firebasestorage.googleapis.com/v0/b/mono-sushi-40aba.appspot.com/o/monoImage%2Flogo.svg?alt=media&token=c146e236-02a7-45ff-ba51-32ece23e18fe" width="150px"
+                alt=""></div>
+        <div class="logo__img-mob"><img src="https://firebasestorage.googleapis.com/v0/b/mono-sushi-40aba.appspot.com/o/monoImage%2Flogo-mobile.svg?alt=media&token=ffad8358-057b-4836-84c4-295605e66f5c"
+                width="70px" alt=""></div>
+
+    </div>
+
+    <div class="product">
+        <div class="product__category action" [routerLink]="[ '/action' ]"
+            routerLinkActive="route-active">
+            <img src="https://firebasestorage.googleapis.com/v0/b/mono-sushi-40aba.appspot.com/o/monoImage%2Fnav-img-gift.svg?alt=media&token=030c0751-925e-4130-9cbf-9ab8e84003b1" alt="">
+            <p>Акції</p>
+        </div>
+        <div class="product__category" *ngFor="let category of headerCategory"
+            [routerLink]="[ '/product/'+ category.path ]"
+            routerLinkActive="route-active">
+            <img [src]="category.imagePath" alt="">
+            <p>{{category.name}}</p>
+        </div>
+    </div>
+
+    <div class="menu" [ngClass]="{'active': active}" (click)="menuToggle()">
+        <span class="menu-1 " title="menu"></span>
+        <div class="header-menu" *ngIf="menu">
+
+            <ul>
+                <li class="header-menu__li"><a [routerLink]="[ '/delivery' ]">Доставка
+                        та оплата</a></li>
+                <li class="header-menu__li"><a [routerLink]="[ '/about' ]">Про
+                        нас</a></li>
+                <li class="header-menu__li"><a [routerLink]="[ '/action' ]">Акції</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <button (click)="openPhoneDialog()" mat-button class="open-popup">
+        <img width="20px" src="https://firebasestorage.googleapis.com/v0/b/mono-sushi-40aba.appspot.com/o/monoImage%2Fphone.svg?alt=media&token=a127bd81-5a3f-4485-bfd8-732dfb332f3a" alt="">
+        <span>МИ ЗАТЕЛЕФОНУЕМО</span>
+    </button>
+
+    <div class="header-phone">
+        <p class="header-phone__num">(097) 878 08 07</p>
+        <p><span class="header-phone__text">Працюємо з </span><span> 11:00
+            </span><span class="header-phone__text"> до </span><span> 21:30</span></p>
+    </div>
+
+
+    <div class="header-login" *ngIf="!isLogin"
+        (click)="openLoginDialog()">
+        <img src="https://firebasestorage.googleapis.com/v0/b/mono-sushi-40aba.appspot.com/o/monoImage%2Fuser.svg?alt=media&token=360b3cd0-46fa-4891-bd1e-59e5d585b01b" alt="">
+        <p></p>
+    </div>
+
+    <div class="header-user" [routerLink]="[ '/'+loginUrl ]" *ngIf="isLogin"
+        routerLinkActive="route-active"><p>{{ loginPage}}</p>
+    </div>
+
+    <div class="menu-mobile" [ngClass]="{'active': active}"
+        (click)="menuToggle()">
+        <span class="menu-1 "></span>
+        <div class="header-menu-mobile" *ngIf="menu">
+
+            <ul>
+                <li class="header-menu__li"><a [routerLink]="[ '/delivery' ]">Доставка
+                        та оплата</a></li>
+                <li class="header-menu__li"><a [routerLink]="[ '/about' ]">Про
+                        нас</a></li>
+                <li class="header-menu__li"><a [routerLink]="[ '/action' ]">Акції</a></li>
+            </ul>
+
+            <p class="phone__num">(097) 878 08 07</p>
+            <p><span class="phone__text">Працюємо з </span><span> 11:00
+                </span><span class="phone__text"> до </span><span> 21:30</span></p>
+        </div>
+    </div>
+
+
+    <button (click)="openBasketDialog()"
+        mat-raised-button class="checkout"><mat-icon
+            class="checkout__icon" matBadge="{{countBasket}}"
+            matBadgeColor="accent">shopping_cart</mat-icon>
+        <span class="checkout__count">{{total}}</span><span
+            class="checkout__name"> грн</span></button>

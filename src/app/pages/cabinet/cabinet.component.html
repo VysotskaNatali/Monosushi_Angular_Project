@@ -1,0 +1,22 @@
+<div class="user">
+    <div class="user__side">
+        <ul>
+            <li [routerLink]="[ '/cabinet/userData' ]"
+                routerLinkActive="route-active">Особисті
+                данні</li>
+            <li [routerLink]="[ '/cabinet/orderHistory']"
+                routerLinkActive="route-active">Історія
+                замовлень </li>
+            <li [routerLink]="[ '/cabinet/changePassword']"
+                routerLinkActive="route-active">Зміна
+                пароля </li>
+            
+        </ul>
+
+        <button (click)="logout()" class="user__side__btn">Вихід</button>
+
+    </div>
+    <div class="user__main">
+        <router-outlet></router-outlet>
+    </div>
+</div>
