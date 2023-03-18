@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatDialogModule } from '@angular/material/dialog';
 
 describe('HomeComponent', () => {
@@ -12,7 +11,7 @@ describe('HomeComponent', () => {
     const spy = jasmine.createSpyObj('ProductService', ['getAll']);
     await TestBed.configureTestingModule({
       declarations: [HomeComponent],
-      imports: [HttpClientTestingModule, MatDialogModule],
+      imports: [ MatDialogModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomeComponent);

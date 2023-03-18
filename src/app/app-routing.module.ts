@@ -4,6 +4,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './shared/guards/auth/auth.guard';
 import { AdminGuard } from './shared/guards/admin/admin.guard';
 
+import { OrderProductComponent } from './pages/order-product/order-product.component';
+
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   {
@@ -55,6 +57,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/product/product.module').then((m) => m.ProductModule),
   },
+  { path: 'ordersProduct', component: OrderProductComponent },
 ];
 
 @NgModule({

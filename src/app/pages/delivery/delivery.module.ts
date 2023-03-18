@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
 import { DeliveryRoutingModule } from './delivery-routing.module';
 import { DeliveryComponent } from './delivery.component';
-import { GoogleMapsModule } from '@angular/google-maps';
+
 import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -12,7 +12,6 @@ import { ToastrModule } from 'ngx-toastr';
     CommonModule,
     SharedModule,
     DeliveryRoutingModule,
-    GoogleMapsModule,
     ToastrModule.forRoot(),
   ],
 })

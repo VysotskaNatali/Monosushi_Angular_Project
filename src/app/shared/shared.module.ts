@@ -8,6 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
 
 const MATERIAL = [
   MatDialogModule,
@@ -18,16 +20,18 @@ const MATERIAL = [
   MatBadgeModule,
   MatGridListModule,
   MatCheckboxModule,
+  MatSelectModule,
+  MatRadioModule,
 ];
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { SwiperModule } from 'swiper/angular';
-
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [],
-  imports: [...MATERIAL, ReactiveFormsModule,SwiperModule],
-  exports: [...MATERIAL, ReactiveFormsModule,SwiperModule],
+  imports: [...MATERIAL, ReactiveFormsModule, SwiperModule, GoogleMapsModule],
+  exports: [...MATERIAL, ReactiveFormsModule, SwiperModule, GoogleMapsModule],
   providers: [],
 })
 export class SharedModule {}

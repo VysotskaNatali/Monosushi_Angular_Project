@@ -10,7 +10,6 @@ import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 import { BasketDialogComponent } from '../basket-dialog/basket-dialog.component';
 import { PhoneDataDialogComponent } from '../phone-data-dialog/phone-data-dialog.component';
 
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -40,7 +39,6 @@ export class HeaderComponent implements OnInit {
     this.updateBasket();
     this.checkUserLogin();
     this.checkUpdateUserLogin();
-    
   }
 
   menuToggle(): void {
@@ -127,7 +125,4 @@ export class HeaderComponent implements OnInit {
       autoFocus: false,
     });
   }
- 
-  
-
 }

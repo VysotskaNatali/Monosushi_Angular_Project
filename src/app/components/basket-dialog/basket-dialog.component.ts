@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { OrderService } from 'src/app/shared/services/order/order.service';
+import { AuthDialogComponent } from '../auth-dialog/auth-dialog.component';
 
 @Component({
   selector: 'app-basket-dialog',
@@ -15,7 +17,9 @@ export class BasketDialogComponent implements OnInit {
 
   constructor(
     private orderService: OrderService,
-    private dialogRef: MatDialogRef<BasketDialogComponent>
+    private dialogRef: MatDialogRef<BasketDialogComponent>,
+    public dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -69,11 +73,20 @@ export class BasketDialogComponent implements OnInit {
     }
   }
   orderProduct(): void {
+    
+ if (localStorage.getItem('currentUser') ) {
+      this.router.navigate(['/ordersProduct']);
+     } else {
+      this.dialog.open(AuthDialogComponent, {
+        backdropClass: 'dialog-back',
+        panelClass: 'auth-dialog',
+        autoFocus: false,
+        position: {
+          top: '100px',
+        },
+      });
+    }
+
     this.dialogRef.close();
-    this.basketArray = [];
-    localStorage.setItem('basket', JSON.stringify(this.basketArray));
-    this.updateBasket();
-    this.orderService.changeBasket.next(true);
-    localStorage.removeItem('basket');
   }
 }

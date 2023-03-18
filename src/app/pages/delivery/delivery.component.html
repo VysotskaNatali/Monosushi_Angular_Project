@@ -26,14 +26,25 @@
     </div>
 </div>
 <div class="delivery__map">
-    <google-map [options]="mapOptions" width="100%">
-        <map-marker
-            *ngFor="let spot of spots"
-            [position]="{ lat: spot.lat, lng: spot.lng }"
-            [options]="markerOptions"
-            [clickable]="true"
-            (mapClick)="selectMarker(spot)"></map-marker>
-    </google-map>
+    <google-map
+    [options]="mapOptions"
+    width="100%">
+
+    <map-marker
+        *ngFor="let spot of spots"
+        [position]="{ lat: spot.lat, lng: spot.lng }"
+        [options]="markerOptions"
+        [clickable]="true"
+        (mapClick)="selectMarker(spot)"></map-marker>
+
+    <map-polygon [paths]="greenZone"
+        [options]="poligonGreen"></map-polygon>
+
+    <map-polygon [paths]="yellowZone"
+        [options]="poligonYellow"></map-polygon>
+    <map-polygon [paths]="greenZone1"
+        [options]="poligonGreen"></map-polygon>
+</google-map>
 </div>
 <div class="description">
     <p> Команда «Monosushi» пропонує надзвичайно зручну систему доставки та

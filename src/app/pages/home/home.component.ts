@@ -82,6 +82,5 @@ export class HomeComponent implements OnInit {
         autoFocus: false,
       });
     }
-    console.log(this.time);
   }
 }

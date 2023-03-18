@@ -43,7 +43,15 @@ export class AuthDialogComponent implements OnInit {
 
   initAuthForm(): void {
     this.authForm = this.fb.group({
-      email: [null,[ Validators.required,Validators.pattern(/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i)]],
+      email: [
+        null,
+        [
+          Validators.required,
+          Validators.pattern(
+            /^(?!.*admin)[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i
+          ),
+        ],
+      ],
       password: [null, [Validators.required]],
     });
   }
@@ -51,13 +59,26 @@ export class AuthDialogComponent implements OnInit {
   initRegistForm(): void {
     this.registForm = this.fb.group(
       {
-        email: [null,[Validators.required, Validators.pattern(/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i)]],
+        email: [
+          null,
+          [
+            Validators.required,
+            Validators.pattern(/^[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}$/i),
+          ],
+        ],
         password: [null, [Validators.required, Validators.minLength(6)]],
         repassword: [null, [Validators.required, Validators.minLength(6)]],
         firstN: [null, [Validators.required, Validators.minLength(2)]],
         lastN: [null, [Validators.required, Validators.minLength(2)]],
-        phone: [null, [ Validators.required,
-                        Validators.pattern(/^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/)] ],
+        phone: [
+          null,
+          [
+            Validators.required,
+            Validators.pattern(
+              /^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\d\d$/
+            ),
+          ],
+        ],
         checked: [null, [Validators.required]],
       },
       { validators: this.validPassword('password', 'repassword') }
@@ -104,13 +125,12 @@ export class AuthDialogComponent implements OnInit {
       doc(this.afs, 'users', credential.user.uid)
     ).subscribe(
       (user) => {
-        const currentUser = { ...user, uid: credential.user.uid };
-        localStorage.setItem('currentUser', JSON.stringify(currentUser));
         if (user && user['role'] === ROLE.USER) {
           this.router.navigate(['/cabinet']);
-        } else if (user && user['role'] === ROLE.ADMIN) {
-          this.router.navigate(['/admin']);
+          const currentUser = { ...user, uid: credential.user.uid };
+          localStorage.setItem('currentUser', JSON.stringify(currentUser));
         }
+        
         this.accountService.isUserLogin$.next(true);
         this.accountService.userData$.next(true);
       },
@@ -155,6 +175,7 @@ export class AuthDialogComponent implements OnInit {
       phoneNumber: phone,
       address: '',
       orders: [],
+      infoOrder:[],
       role: 'USER',
     };
     setDoc(doc(this.afs, 'users', credential.user.uid), user);

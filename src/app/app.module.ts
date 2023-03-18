@@ -23,6 +23,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PhoneDataDialogComponent } from './components/phone-data-dialog/phone-data-dialog.component';
 import { CallOrderComponent } from './components/call-order/call-order.component';
+import { OrderProductComponent } from './pages/order-product/order-product.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CallOrderComponent } from './components/call-order/call-order.component
     HeaderComponent,
     PhoneDataDialogComponent,
     CallOrderComponent,
+    OrderProductComponent,
    
   ],
   imports: [
