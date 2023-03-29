@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'ngx-toastr/toastr';
+@import 'app/shared/styles/variables';
+@import 'app/shared/styles/mixins/media';
+@import 'app/shared/styles/theme-material';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: rgb(242, 246, 250);
+
+}
+body::-webkit-scrollbar{
+    width:25px;
+    @include respond(mobile) {
+     width: 5px;
+      }
+}
+body::-webkit-scrollbar-track{
+   background-color: $scroll;
+
+}
+body::-webkit-scrollbar-thumb{
+    background: url('https://firebasestorage.googleapis.com/v0/b/mono-sushi-40aba.appspot.com/o/monoImage%2Flogo-mobile.svg?alt=media&token=ffad8358-057b-4836-84c4-295605e66f5c') no-repeat center;
+    border: 3px solid $mainCol;
+    border-radius: 8px;
+    background-size: 25px;
+    box-shadow: inset 0px 0px 9px 1px $mainCol;
+    @include respond(mobile) {
+       background-color: $mainCol;
+         }
+ }
+ body::-webkit-scrollbar-button{
+    background: url('https://firebasestorage.googleapis.com/v0/b/mono-sushi-40aba.appspot.com/o/monoImage%2Flogo-mobile.svg?alt=media&token=ffad8358-057b-4836-84c4-295605e66f5c') no-repeat center;
+    background-size: 20px;
+    @include respond(mobile) {
+        background-image: none ;
+        background-color: $mainCol;
+         }
+}
+button{
+    cursor: pointer;
+}

@@ -1,0 +1,19 @@
+<div class="admin">
+    <div class="admin__side">
+        <ul>
+            <li [routerLink]="[ '/admin/discount' ]"
+                routerLinkActive="route-active">Акції</li>
+            <li [routerLink]="[ '/admin/category']"
+                routerLinkActive="route-active">Категорії </li>
+            <li [routerLink]="[ '/admin/product' ]"
+                routerLinkActive="route-active">Товари </li>
+            <li [routerLink]="[ '/admin/order' ]"
+                routerLinkActive="route-active">Замовлення </li>
+        </ul>
+
+        <button (click)="logout()" class="admin__side__btn">Вихід</button>
+    </div>
+    <div class="admin__main">
+        <router-outlet></router-outlet>
+    </div>
+</div>

@@ -1,0 +1,141 @@
+<div class="carusel">
+   <swiper
+[slidesPerView]="2"
+[spaceBetween]="10"
+[navigation]="true"
+[pagination]="{ clickable: true }"
+>
+<ng-template swiperSlide *ngFor="let discount of discounts"><div  [routerLink]="[ '/action', discount.id ]"
+    class="carusel__img" ><img [src]="discount.imagePath"></div></ng-template>
+</swiper></div>
+
+<div class="carusel-mobile" >
+    <swiper
+ [slidesPerView]="1"
+ [spaceBetween]="10"
+ [navigation]="true"
+ [pagination]="{ clickable: true }"
+ >
+ <ng-template swiperSlide *ngFor="let discount of discounts"><div  [routerLink]="[ '/action', discount.id ]"
+     class="carusel__img" ><img [src]="discount.imagePath"></div></ng-template>
+ </swiper></div>
+
+ <div class="main">
+    <div class="main__delivery">
+        <img src="https://firebasestorage.googleapis.com/v0/b/mono-sushi-40aba.appspot.com/o/monoImage%2Fmn-delivery-img.svg?alt=media&token=645aad9e-6316-4ffc-bf05-d64459244855"
+            alt="delivery">
+        <button class="main__delivery__btn"
+            [routerLink]="[ '/delivery' ]">зони доставки
+        </button>
+    </div>
+    <div class="main__info">
+        <img src="https://firebasestorage.googleapis.com/v0/b/mono-sushi-40aba.appspot.com/o/monoImage%2Fmono-supermen.svg?alt=media&token=6eb86f85-9886-4020-a794-24eb9c02d58b" alt="info">
+        <div>
+            <p>Середній час доставки в</p>
+            <p>зеленій зоні <span>00:43:00</span></p>
+        </div>
+    </div>
+    <div class="main__info">
+        <img src="https://firebasestorage.googleapis.com/v0/b/mono-sushi-40aba.appspot.com/o/monoImage%2Fmono-bonus.svg?alt=media&token=b9f6bb03-cca8-405c-8612-50aaf8ccbd1b" alt="info">
+        <div>
+            <p>Наш графік роботи</p>
+            <p>Працюємо з <span>11:00</span> до <span>21:30</span></p>
+        </div>
+    </div>
+</div>
+
+<div class="userProduct">
+    <div class="userProduct__block" *ngFor="let product of userProducts">
+        <img [routerLink]="['/product/'+product.category.path, product.id ]"
+            class="userProduct__block__img" [src]="product.imagePath"
+            [alt]="product.name">
+        <div>
+            <div class="userProduct__block__text"
+                [routerLink]="['/product/'+product.category.path, product.id ]">
+                <h2 class="userProduct__block__text__name">{{product.name}}</h2>
+                <span class="userProduct__block__text__description">{{product.description}}</span>
+                <span class="userProduct__block__text__weight">{{product.weight
+                    }} <span>г</span></span>
+            </div>
+
+            <div class="userProduct__block__price">
+                <p class="userProduct__block__price__text">{{product.price *
+                    product.count}} <span>грн</span></p>
+
+                <div class="userProduct__block__price__count">
+                    <button (click)="productCount(product, true)"
+                        class="userProduct__block__price__count__plus">+</button>
+                    <span class="userProduct__block__price__count__num">{{product.count}}</span>
+                    <button (click)="productCount(product, false)"
+                        class="userProduct__block__price__count__min">-</button>
+                    <button (click)="addToBasket(product)"
+                        class="userProduct__block__price__count__btn">Замовити</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tittle">
+    <h2 class="tittle__top">Доставка суші у Львові від "Monosushi"</h2>
+    <h3 class="tittle__top-1">Безкоштовна доставка суші у Львові Monosushi.</h3>
+    <p class="tittle__description">Нам три роки. За цей час ми підкорили
+        серця
+        багатьох львів’ян. І це лише початок! Адже кожного місяця ми
+        стараємось
+        для Вас і стаємо кращими у кожному аспекті. Ми не ті, про кого
+        кажуть:
+        «Зіпсувались». Ми вкладаємо всю душу в нашу компанію та радіємо
+        кожному
+        Вашому позитивному відгуку!</p>
+    <div class="tittle__hide" *ngIf="hide">
+        <h3 class="tittle__top-1">Чому ми?</h3>
+        <p class="tittle__description"> <span class="tittle__bold">Якість
+                продуктів.</span>Спробувавши десятки різних доставок ми
+            зрозуміли, що запорукою та секретом смаку завжди є свіжі та
+            якісні
+            продукти. Саме тому ми з особливим трепетом та уважністю
+            обираємо
+            продукти, які поїдуть до нас на кухню.</p>
+
+        <p class="tittle__description"> <span class="tittle__bold">Неймовірний
+                смак</span>Так, ми Вас розуміємо. Важко в це повірити коли
+            кожна
+            доставка обіцяє «смачний продукт». Проте, ми використовуємо
+            інгредієнти, які за якістю є на порядок вище тих, які
+            використовуть
+            наші конкуренти у своїх рецептах. Ми не економимо і
+            використовуємо
+            лише найбільш якісні та дорогі продукти для створення наших
+            страв!
+            Ну і чого тільки варті наші Запечені сирні суші! Вони однозначно
+            є
+            хедлайнерами нашого меню! Це те, чого Ви раніше ще точно не
+            куштували!.</p>
+
+        <p class="tittle__description"> <span class="tittle__bold">Великі
+                порції.</span>Ми любимо смачно та ситно поїсти! Впевнені, Ви
+            теж! Тому, ми з неабияким захватом підійшли до розробки грамажу
+            наших ролів. Ми намагались віднайти ідеальний розмір аби наші
+            моносуші були доволі ситними, але в той же час комфортними для
+            споживання.
+            Також, кожного разу при приготуванні ролів ми використовуємо
+            ваги
+            аби страва відповідала грамажу вказаному на сайті!</p>
+
+        <p class="tittle__description"> <span class="tittle__bold">Абсолютна
+                чистота на кухні.</span>При приготуванні страв ми
+            притримуємось
+            усіх санітарних норм та правил аби Ви могли бути на 100%
+            впевнені в
+            якості та безпечності страв.</p>
+
+        <p class="tittle__description"> <span class="tittle__bold">Гарне
+                упакування та уважність до деталей!</span>Monosushi – були
+            створені командою перфекціоністів, тому кожна деталь нашого
+            упакування продумана до дрібниць.</p>
+
+    </div>
+    <p class="tittle__open" (click)="hide=!hide ">{{hide?'Згорнути
+        ⯅':'Дізнатись більше ⯆'}}</p>
+</div>

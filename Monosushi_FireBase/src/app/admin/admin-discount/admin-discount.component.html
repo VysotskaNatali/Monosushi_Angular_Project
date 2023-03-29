@@ -1,0 +1,56 @@
+<button class="action__btn" (click)=" showForm=!showForm"> Додати акцію</button>
+<table class="table" *ngIf="showForm">
+    <thead>
+        <tr>
+            <th class="mobileNone" scope="col">Дата</th>
+            <th scope="col">Назва</th>
+            <th class="mobileNone" scope="col">Заголовок</th>
+            <th scope="col">Опис</th>
+            <th scope="col">Картинка</th>
+            <th scope="col">Дії</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let discount of adminDiscounts">
+            <td class="mobileNone">{{discount.data }}</td>
+            <td>{{discount.name}}</td>
+            <td class="mobileNone">{{discount.title}} </td>
+            <td>{{discount.description| slice:0:33 }} <span
+                    *ngIf="discount.description.length> 33">...</span></td>
+
+            <td><img class="img" [src]="discount.imagePath"
+                    [alt]="discount.name"></td>
+            <td>
+                <button (click)="editDiscount(discount)"
+                    class="table__btn">Редагувати</button>
+                <button (click)="deleteDiscount(discount)"
+                    class="table__btn">Видалити</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<form class="form" [formGroup]="discountForm" (ngSubmit)="saveDiscount()"
+    *ngIf="!showForm">
+
+    <input formControlName="name"
+        class="form__input" type="text" placeholder="*Назва">
+    <input formControlName="title"
+        class="form__input" type="text" placeholder="*Заголовок">
+    <textarea formControlName="description"
+        class="form__textarea" placeholder="*Опис"></textarea>
+
+    <ng-container *ngIf="!isUploaded">
+        <input class="form__file" type="file" placeholder=""
+            (change)="upload($event)">
+    </ng-container>
+
+    <ng-container *ngIf="isUploaded">
+        <img class="form__imgAdd" [src]="valueByControl('imagePath')" alt="">
+        <button type="button" class="form__deleteImg" (click)="deleteImage()">ВИДАЛИТИ</button>
+    </ng-container>
+    <button type="submit" [disabled]="discountForm.invalid"
+        class="form__btn"> {{ editStatus ? 'Зберегти' : 'Додати' }} </button>
+</form>

@@ -1,0 +1,336 @@
+@import "../../shared/styles/variables";
+@import "../../shared/styles/base";
+@import "../../shared/styles/mixins/media";
+
+.header {
+  width: 100%;
+  height: 110px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $white;
+  z-index: 5;
+  @include respond(tablet) {
+    height: 100px;
+  }
+  @include respond(mobile) {
+    height: 80px;
+  }
+}
+.logo {
+  width: 170px;
+  height: 110px;
+  background-color: $mainCol;
+  padding: 20px 10px;
+  @include respond(tablet) {
+    height: 100px;
+  }
+  @include respond(mobile) {
+    width: 100px;
+    height: 80px;
+    padding: 5px;
+  }
+  &__img {
+    @include respond(mobile) {
+      display: none;
+    }
+  }
+  &__img-mob {
+    display: none;
+    @include respond(mobile) {
+      display: block;
+    }
+  }
+}
+.product {
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+  &__category {
+    width: 80px;
+    height: 80px;
+    padding: 15px;
+    border: 2px solid transparent;
+    box-shadow: inset 0 0 15px 0 $white;
+    border-radius: 15px;
+    @include respond(mobile) {
+      width: 65px;
+    }
+    &:hover {
+      @extend %border;
+    }
+  }
+  &__category img {
+    margin-left: 5px;
+  }
+  @include respond(tablet) {
+    width: 100%;
+    background-color: $lightText;
+    position: fixed;
+    bottom: 0;
+  }
+}
+.action {
+  @include respond(mobile) {
+    display: none;
+  }
+}
+.menu {
+  font-size: 35px;
+  width: 70px;
+  height: 70px;
+  position: relative;
+  border: 2px solid transparent;
+  box-shadow: inset 0 0 15px 0 $white;
+  border-radius: 15px;
+  padding: 32px 18px;
+  &:hover {
+    @extend %border;
+  }
+  @include respond(mobile) {
+    display: none;
+  }
+  .menu-1 {
+    position: relative;
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: $darkText;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    z-index: 100;
+
+    &:before,
+    &:after {
+      position: absolute;
+      width: 30px;
+      height: 3px;
+      content: " ";
+      z-index: -1;
+      transition: all 0.3s ease;
+      background: $darkText;
+    }
+
+    &:before {
+      top: -11px;
+      left: 0;
+    }
+
+    &:after {
+      top: 11px;
+      right: 0;
+    }
+  }
+}
+.active {
+  .menu-1 {
+    background: transparent;
+
+    &:before,
+    &:after {
+      top: 0;
+    }
+
+    &:after {
+      transform: rotate(135deg);
+    }
+
+    &:before {
+      transform: rotate(-135deg);
+    }
+  }
+}
+.menu-mobile {
+  @extend .menu;
+  display: none;
+  @include respond(mobile) {
+    display: block;
+    position: static;
+  }
+}
+.header-menu {
+  position: absolute;
+  width: 250px;
+  height: 260px;
+  border: 2px solid $mainCol;
+  border-radius: 5px;
+  top: -2px;
+  right: -150px;
+  background-color: rgb(242, 246, 250);
+  z-index: 2;
+  padding: 60px 20px 0;
+  &__li a {
+    text-decoration: none;
+    color: $darkText;
+    font-size: 15px;
+    font-weight: bolder;
+  }
+  &__li {
+    width: 90%;
+    min-height: 40px;
+    border: 1px solid transparent;
+    line-height: 25px;
+    text-align: start;
+    padding-left: 10px;
+    margin: 10px;
+    &:hover {
+      @extend %border;
+    }
+  }
+  @include respond(mobile) {
+    display: none;
+  }
+}
+.header-menu-mobile {
+  @extend .header-menu;
+  display: block;
+  overflow: hidden;
+  .header-menu__li {
+    width: 170px;
+  }
+  .phone__num {
+    font-size: 15px;
+    margin: 100px 0px 10px 40px;
+    &:hover {
+      color: $mainCol;
+    }
+  }
+  p {
+    width: 250px;
+  }
+  .phone__text,
+  span {
+    font-size: 15px;
+  }
+  @include respond(mobile) {
+    position: fixed;
+    top: 80px;
+    right: -2px;
+    height: 100vh;
+    animation: menu 1000ms linear forwards;
+  }
+  @keyframes menu {
+    80% {
+      width: 280px;
+    }
+    100% {
+      width: 270px;
+      overflow: hidden;
+    }
+  }
+}
+.open-popup {
+  width: 201px;
+  height: 45px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 5px;
+  border-radius: 5px;
+  background-color: $mainCol;
+  border: 3px solid $mainCol;
+  img {
+    margin-right: 5px;
+  }
+  &:hover {
+    background-color: transparent;
+  }
+  span {
+    @include respond(tablet) {
+      display: none;
+    }
+  }
+  @include respond(tablet) {
+    width: 70px;
+    height: 70px;
+    border-radius: 15px;
+    background-color: transparent;
+    border: 2px solid transparent;
+    box-shadow: inset 0 0 15px 0 $white;
+  }
+
+  &:hover {
+    @extend %border;
+  }
+}
+.header-phone {
+  text-align: center;
+  font-weight: bolder;
+  color: $darkText;
+  &__text {
+    color: $lightText;
+    font-weight: 200;
+  }
+  &__num:hover {
+    color: $mainCol;
+  }
+  @include respond(mobile) {
+    display: none;
+  }
+}
+.header-login {
+  padding: 30px 0;
+  text-align: center;
+  width: 60px;
+  height: 80px;
+  border: 2px solid transparent;
+  box-shadow: inset 0 0 15px 0 $white;
+  border-radius: 15px;
+  &:hover {
+    @extend %border;
+  }
+}
+.header-user {
+  @extend .product__category;
+  padding: 30px 0;
+  text-align: center;
+  color: $mainCol;
+  font-weight: bolder;
+  box-shadow: inset 0 0 15px 0 $white;
+  border-radius: 15px;
+  &:hover {
+    @extend %border;
+  }
+  @include respond(mobile) {
+    font-size: 10px;
+  }
+}
+.checkout {
+  width: 154px;
+  height: 110px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $mainCol;
+  position: relative;
+  @include respond(tablet) {
+    height: 100px;
+  }
+  @include respond(mobile) {
+    width: 100px;
+    height: 80px;
+    justify-content: center;
+  }
+  &__icon {
+    font-size: 40px;
+  }
+  &__count {
+    font-weight: bolder;
+    margin: 0 3px 0 20px;
+    font-size: 18px;
+    color: $darkText;
+    @include respond(mobile) {
+      font-size: 11px;
+    }
+  }
+  &__name {
+    font-weight: lighter;
+    font-size: 18px;
+    @include respond(mobile) {
+      font-size: 11px;
+    }
+  }
+}

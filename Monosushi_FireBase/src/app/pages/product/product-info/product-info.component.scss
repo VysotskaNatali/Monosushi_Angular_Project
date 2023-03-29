@@ -1,0 +1,118 @@
+@import "../../../shared/styles/variables";
+@import "../../../shared/styles/base";
+@import "../../../shared/styles/mixins/media";
+
+.product {
+  margin: 200px auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  @include respond(mobile) {
+    margin: 80px auto;
+  }
+  &__img {
+    height: 180px;
+    cursor: pointer;
+    margin: 35px 15px 0 0;
+    @include respond(tablet) {
+      height: 110px;
+    }
+    @include respond(mobile) {
+      height: 100px;
+    }
+  }
+  &__item {
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 15px;
+    @include respond(tablet) {
+      width: 250px;
+    }
+    &__name {
+      width: 100%;
+      font-size: 32px;
+      font-weight: bolder;
+      color: $darkText;
+      margin: 15px 0;
+      @include respond(tablet) {
+        font-size: 25px;
+      }
+      @include respond(mobile) {
+        font-size: 18px;
+      }
+    }
+    &__p {
+      width: 20%;
+      color: $mainCol;
+      font-size: 20px;
+      font-weight: bolder;
+      margin: 10px 0;
+    }
+    &__p1 {
+      width: 60%;
+      color: $lightText;
+      font-size: 20px;
+      margin: 10px;
+    }
+    &__count {
+      display: flex;
+      margin: 25px 10;
+      &__price {
+        font-size: 22px;
+        font-weight: bolder;
+        color: $darkText;
+        margin: 10px 65px 0 0;
+        @include respond(tablet) {
+           width: 50px;
+        }
+      }
+      &__plus {
+        @extend %btn__plus;
+        @include respond(mobile) {
+          height: 30px;
+          line-height: 30px;
+        }
+      }
+      &__min {
+        @extend %btn__min;
+        @include respond(mobile) {
+          height: 30px;
+          line-height: 30px;
+        }
+      }
+      &__num {
+        @extend %btn__num;
+        @include respond(mobile) {
+          height: 30px;
+          line-height: 30px;
+        }
+      }
+      &__btn {
+        width: 130px;
+        height: 40px;
+        outline: none;
+        border-radius: 5px;
+        border: 1px solid $mainCol;
+        font-size: 18px;
+        font-weight: bolder;
+        background-color: $mainCol;
+        @include respond(mobile) {
+          width: 100px;
+          height: 30px;
+          font-size: 15px;
+        }
+      }
+    }
+    p {
+      @include respond(tablet) {
+        font-size: 15px;
+      }
+      @include respond(mobile) {
+        font-size: 14px;
+        margin: 10px;
+      }
+    }
+  }
+}

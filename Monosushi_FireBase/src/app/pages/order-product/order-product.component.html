@@ -1,0 +1,155 @@
+<h1 class="header">Оформити замовлення</h1>
+<div class="basket">
+    <div class="basket__product"*ngIf="basketArray.length> 0">
+
+        <mat-grid-list cols="14" rowHeight="100px" *ngFor="let product of
+            basketArray">
+
+            <mat-grid-tile colspan="3"><img [routerLink]="[ '/product/'+
+                    product.category.path,product.id ]"
+                    [src]="product.imagePath" alt="product.name"></mat-grid-tile>
+            <mat-grid-tile colspan="4">{{product.name}}</mat-grid-tile>
+            <mat-grid-tile colspan="3">
+                <div class="basket__product__count">
+                    <button (click)="productCount(product, true)"
+                        class="basket__product__count__plus">+</button>
+                    <span class="basket__product__count__num">{{product.count}}</span>
+                    <button (click)="productCount(product, false)"
+                        class="basket__product__count__min">-</button>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="2"><p>{{product.count*product.price}} грн</p></mat-grid-tile>
+            <mat-grid-tile colspan="1"> <button mat-icon-button
+                    (click)="deleteBasketProduct(product)">
+                    <mat-icon>delete</mat-icon></button>
+            </mat-grid-tile>
+        </mat-grid-list>
+        <div class="basket__order">
+            <div class="basket__order__sum">
+                <p>До оплати: <span>{{total}}</span> грн</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="basketArray.length <= 0" class="basket__zero">
+        <img
+            src="https://firebasestorage.googleapis.com/v0/b/mono-sushi-40aba.appspot.com/o/monoImage%2FbasketZero.svg?alt=media&token=abd5413e-617b-4d8c-95cf-f17a1235f21e"
+            alt="ZERO">
+        <h1 class="basket__zero__text">кошик порожній</h1>
+        <button class="basket__zero__btn" [routerLink]="[ '/product/roli']"
+            mat-dialog-close>Перейти до каталогу</button>
+    </div>
+</div>
+
+<div class="googleMaps">
+
+    <google-map
+        [options]="mapOptions"
+        width="100%"
+        (mapClick)="moveMap($event)">
+
+        <map-marker
+            *ngFor="let spot of spots"
+            [position]="{ lat: spot.lat, lng: spot.lng }"
+            [options]="markerOptions"
+            [clickable]="true"
+            (mapClick)="selectMarker(spot)"></map-marker>
+
+        <map-polygon [paths]="greenZone"
+            [options]="poligonGreen"></map-polygon>
+
+        <map-polygon [paths]="yellowZone"
+            [options]="poligonYellow"></map-polygon>
+        <map-polygon [paths]="greenZone1"
+            [options]="poligonGreen"></map-polygon>
+    </google-map>
+</div>
+
+<form class="form" [formGroup]="userForm">
+
+    <div class="form-group-half">
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>*Ваше І'мя</mat-label>
+            <input formControlName="firstN"
+                matInput type="text">
+        </mat-form-field>
+    </div>
+
+    <div class="form-group-half">
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>*Ваша фамілія</mat-label>
+            <input formControlName="lastN"
+                matInput type="text">
+        </mat-form-field>
+    </div>
+
+    <div class="form-group-half">
+        <mat-form-field appearance="outline" color="primary"
+            class="example-full-width">
+            <mat-label>Ваш телефон</mat-label>
+            <span matPrefix>+38 &nbsp;</span>
+            <input type="tel" matInput formControlName="phone"
+                placeholder="063 220 22 11">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+    </div>
+
+    <div class="form-group-half">
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>*Ваша Адреса</mat-label>
+            <input formControlName="address"
+                matInput type="text">
+        </mat-form-field></div>
+
+</form>
+
+<form class="form" [formGroup]="orderInfoForm">
+
+    <div class="form-group-half">
+        <mat-form-field appearance="outline">
+            <mat-label>Оберіть варіант приборів</mat-label>
+            <mat-select formControlName="holders" name="holders">
+                <mat-option value="навчальні">навчальні</mat-option>
+                <mat-option value="звичайні">звичайні</mat-option>
+            </mat-select>
+        </mat-form-field></div>
+
+    <div class="form-group-half">
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>*Кількість приборів</mat-label>
+            <input formControlName="countHolders"
+                matInput type="number">
+        </mat-form-field>
+    </div>
+
+    <div class="form-group-half">
+        <mat-form-field appearance="outline">
+            <mat-label>Оберіть спосіб оплати</mat-label>
+            <mat-select formControlName="cash" name="cash">
+                <mat-option value="Оплата готівкою">Оплата готівкою
+                </mat-option>
+                <mat-option value="Безготівкова оплата">Безготівкова оплата</mat-option>
+            </mat-select>
+        </mat-form-field></div>
+
+    <div class="form-group-half">
+        <mat-form-field appearance="outline">
+            <mat-label>Оберіть спосіб доставки</mat-label>
+            <mat-select formControlName="delivery">
+                <mat-option value="Delivery">Доставка за адресою
+                </mat-option>
+                <mat-option value="Pickup">Самовивіз</mat-option>
+            </mat-select>
+        </mat-form-field></div>
+    <div class="form-group">
+        <mat-checkbox color="primary" class="callBackchek"
+            formControlName="callBack">Зателефонуйте
+            мені для уточнення деталей</mat-checkbox>
+    </div>
+    <div class="form-group">
+        <button mat-raised-button [disabled]="orderInfoForm.invalid"
+            type="submit"
+            color="primary" (click)="orderProduct()">ОФОРМИТИ ЗАМОВЛЕННЯ</button>
+    </div>
+</form>

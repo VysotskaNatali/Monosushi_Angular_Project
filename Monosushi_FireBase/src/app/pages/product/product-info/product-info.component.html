@@ -1,0 +1,28 @@
+
+<div class="product">
+    <img [routerLink]="['/product/'+currentProduct.category.path]"
+    class="product__img "[src]="currentProduct.imagePath" [alt]="currentProduct.name">
+
+    <div class="product__item">
+        <h2 [routerLink]="['/product/'+currentProduct.category.path]"
+        class="product__item__name">{{currentProduct.name}}</h2>
+        <p class="product__item__p">Склад: </p><p class="product__item__p1">{{currentProduct.description}}</p>
+        <p class="product__item__p">Вага: </p><p class="product__item__p1">{{currentProduct.weight}}
+            г</p>
+
+        <div class="product__item__count">
+            <p class="product__item__count__price">{{currentProduct.price *
+                currentProduct.count}} <span>грн</span></p>
+
+
+                <button (click)="productCount(currentProduct, false)"
+                class="product__item__count__plus">-</button>
+                <span class="product__item__count__num">{{currentProduct.count}}</span>
+                <button (click)="productCount(currentProduct, true)"
+                 class="product__item__count__min">+</button>
+                <button (click)="addToBasket(currentProduct)"
+                class="product__item__count__btn">Замовити</button>
+
+        </div>
+    </div>
+</div>

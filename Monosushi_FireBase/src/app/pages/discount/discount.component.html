@@ -1,0 +1,10 @@
+<h1 class="header">Акції</h1>
+<div class="userDiscount">
+   <div [routerLink]="[ '/action', discount.id ]"
+      class="userDiscount__block" *ngFor="let discount of userDiscounts">
+      <img class="userDiscount__block__img" [src]="discount.imagePath" alt="">
+      <h2 class="userDiscount__block__name">{{discount.name}}</h2>
+      <button class="userDiscount__block__btn"> Дізнатись більше</button>
+      <p>{{discount.id }}</p>
+   </div>
+</div>

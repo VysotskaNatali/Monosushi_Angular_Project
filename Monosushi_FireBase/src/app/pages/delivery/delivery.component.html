@@ -1,0 +1,94 @@
+<h1 class="name">Доставка та оплата</h1>
+<div class="delivery">
+    <div class="delivery__box">
+        <img src="https://firebasestorage.googleapis.com/v0/b/mono-sushi-40aba.appspot.com/o/monoImage%2Fmn-delivery-img.svg?alt=media&token=98c552fc-9835-4434-9cad-262c44c02846" width="270px"
+            alt="delivery">
+        <div class="delivery__text">
+            <h1 class="green">Зелена зона</h1>
+            <p>В межах зеленої зони ми доставляємо протягом <span class="green">1
+                    год.</span></p>
+            <br>
+            <p>Мінімальна сума замовлення в цю зону становить<span
+                    class="green"> 300 грн</span> </p>
+        </div>
+    </div>
+    <div class="delivery__box">
+        <img src="https://firebasestorage.googleapis.com/v0/b/mono-sushi-40aba.appspot.com/o/monoImage%2Fmn-delivery-img.svg?alt=media&token=98c552fc-9835-4434-9cad-262c44c02846" width="270px"
+            alt="delivery">
+        <div class="delivery__text">
+            <h1 class="yellow">Жовта зона</h1>
+            <p>В межах жовтої зони ми доставляємо протягом <span class="yellow">1.5
+                    год.</span></p>
+            <br>
+            <p>Мінімальна сума замовлення в цю зону становить <span
+                    class="yellow">400 грн</span></p>
+        </div>
+    </div>
+</div>
+<div class="delivery__map">
+    <google-map
+    [options]="mapOptions"
+    width="100%">
+
+    <map-marker
+        *ngFor="let spot of spots"
+        [position]="{ lat: spot.lat, lng: spot.lng }"
+        [options]="markerOptions"
+        [clickable]="true"
+        (mapClick)="selectMarker(spot)"></map-marker>
+
+    <map-polygon [paths]="greenZone"
+        [options]="poligonGreen"></map-polygon>
+
+    <map-polygon [paths]="yellowZone"
+        [options]="poligonYellow"></map-polygon>
+    <map-polygon [paths]="greenZone1"
+        [options]="poligonGreen"></map-polygon>
+</google-map>
+</div>
+<div class="description">
+    <p> Команда «Monosushi» пропонує надзвичайно зручну систему доставки та
+        оплати. Чіткість наших стандартів роботи забезпечує швидке і якісне
+        виконання замовлень для наших гостей.</p>
+    <br>
+    <p> Ми поділили Львів на умовні зони доставки – зелену та жовту. Для кожної
+        зони ми чітко визначаємо час доставки.
+        Зелена зона доставки знаходиться ближче до нашої кухні, тому замовлення
+        в цю зону доставляються – до 1 год. В жовту зону, яка знаходиться значно
+        далі – до 1,5 год.</p>
+</div>
+
+<div class="payments">
+    <h2 class="payments__header">Оплата</h2>
+    <div class="payment bord">
+        <img src="https://firebasestorage.googleapis.com/v0/b/mono-sushi-40aba.appspot.com/o/monoImage%2Fpay-info-img-1.svg?alt=media&token=341b28a3-7e07-46c6-809e-1d0e0300c294" alt="">
+        <div>
+            <h3 class="payment__top">Оплата готівкою</h3>
+            <p class="payment__desc">Розраховуйтесь за свої улюблені сушики
+                готівкою при отриманні.</p>
+        </div>
+    </div>
+
+    <div class="payment">
+        <img src="https://firebasestorage.googleapis.com/v0/b/mono-sushi-40aba.appspot.com/o/monoImage%2Fpay-info-img-3.svg?alt=media&token=0a0f1830-9c89-441b-a2f6-c66ab9251632" alt="">
+        <div>
+            <h3 class="payment__top">Безготівкова оплата</h3>
+            <p class="payment__desc">Розраховуйтесь за свої улюблені сушики
+                онлайн або карткою при отриманні.</p>
+        </div>
+    </div>
+
+</div>
+<div class="description">
+    <p>Ми пропонуємо Вам 3 найпоширеніші варіанти для розрахунку: готівка,
+        оплата онлайн або ж розрахунок карткою.</p>
+    <br>
+    <br>
+    <p>Просто позначте найбільш зручний для Вас спосіб оплати при оформленні
+        замовлення на сайті або ж повідомте про це оператора по телефону.</p>
+    <br>
+    <br>
+    <p>Доставка «Моносуші» – це чіткі стандарти роботи, високий рівень сервісу
+        та турбота про кожного гостя. Ми щодня розвиваємось, щоб почути лише три
+        слова «Моносуші – це любов».</p>
+</div>

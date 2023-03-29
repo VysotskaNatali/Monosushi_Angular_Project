@@ -1,0 +1,59 @@
+<form class="form" [formGroup]="userForm">
+    <div class="header">
+        <span class="header__number">1</span>
+        <h2>Особисті дані</h2>
+    </div>
+
+    <div class="form-group-half">
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>*Ваше І'мя</mat-label>
+            <input formControlName="firstN"
+                matInput type="text">
+        </mat-form-field>
+    </div>
+    <div class="form-group-half">
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>*Ваша фамілія</mat-label>
+            <input formControlName="lastN"
+                matInput type="text">
+        </mat-form-field>
+    </div>
+    <div class="form-group">
+        <mat-form-field appearance="outline" color="primary"
+            class="example-full-width">
+            <mat-label>Ваш телефон</mat-label>
+            <span matPrefix>+38 &nbsp;</span>
+            <input type="tel" matInput formControlName="phone"
+                placeholder="063 220 22 11">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="form-group">
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>*Ваш email</mat-label>
+            <input formControlName="email" 
+                matInput type="email">
+        </mat-form-field>
+    </div>
+    
+    <div class="header">
+        <span class="header__number">2</span>
+        <h2>Адреси</h2>
+    </div>
+
+    <div class="form-group" *ngIf="isAddress">
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>*Ваша Адреса</mat-label>
+            <input formControlName="address"
+                matInput type="text">
+        </mat-form-field>
+    </div>
+
+    <div class="form-group-half">
+        <button class="addAddress" (click)="isAddress=!isAddress ">Додати адресу</button>
+    </div>
+    <div class="form-group-half">
+        <button class="saveAddress" (click)="updateUserData()">Зберегти зміни</button>
+    </div>
+
+</form>

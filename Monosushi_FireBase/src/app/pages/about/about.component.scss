@@ -1,0 +1,219 @@
+@import "../../shared/styles/variables";
+@import "../../shared/styles/base";
+@import "../../shared/styles/mixins/media";
+
+.header {
+  width: 200px;
+  @extend %logoHeader;
+}
+.about {
+  width: 90%;
+  margin: 10px auto;
+  &__header {
+    font-size: 34px;
+    font-weight: bold;
+    color: $darkText;
+    padding: 10px 0;
+    @include respond(mobile) {
+      font-size: 20px;
+    }
+  }
+  &__text {
+    font-weight: 100;
+    color: $lightText;
+    line-height: 30px;
+    letter-spacing: 0, 8px;
+    @include respond(mobile) {
+      font-size: 14px;
+      line-height: 25px;
+    }
+  }
+}
+ul {
+  margin: 20px;
+  list-style-type: circle;
+  list-style-image: url("https://firebasestorage.googleapis.com/v0/b/mono-sushi-40aba.appspot.com/o/monoImage%2Fcompact-disc.svg?alt=media&token=f1dea6e7-9293-417b-96d6-f64f2d77a154");
+}
+ul li {
+  color: $lightText;
+  padding: 7px 0px;
+  @include respond(mobile) {
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0px;
+  }
+}
+.aboutContainer {
+  margin: 100px auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  @include respond(tablet) {
+    width: 90%;
+  }
+  img {
+    width: 500px;
+    border-radius: 5%;
+    margin-bottom: 70px;
+    @include respond(tablet) {
+      width: 300px;
+      height: 300px;
+      margin: 0 20px 20px;
+    }
+  }
+  &__block {
+    width: 450px;
+    padding: 120px 50px;
+    @include respond(tablet) {
+      width: 360px;
+      padding: 20px 10px;
+    }
+    @include respond(mobile) {
+      width: 90%;
+      margin: 0 auto;
+    }
+    h3 {
+      color: $darkText;
+      font-size: 22px;
+      font-weight: bold;
+      padding: 20px 0;
+    }
+    p {
+      color: $lightText;
+      line-height: 35px;
+      @include respond(mobile) {
+        font-size: 14px;
+        line-height: 25px;
+      }
+    }
+    span {
+      font-weight: bolder;
+      color: $darkText;
+    }
+  }
+}
+.headerName {
+  text-align: center;
+  font-size: 35px;
+  font-weight: bolder;
+  margin: 70px 0;
+  @include respond(mobile) {
+    font-size: 24px;
+    margin: 20px 0;
+  }
+}
+.advantages {
+  width: 80%;
+  margin: 50px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  @include respond(tablet) {
+    width: 95%;
+  }
+  @include respond(tablet) {
+    width: 98%;
+  }
+  &__block {
+    width: 25%;
+    min-height: 200px;
+    padding: 0 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include respond(tablet) {
+      padding: 0 15px;
+    }
+    @include respond(mobile) {
+      width: 150px;
+      padding: 0 5px;
+      border: 1px solid $lightBorder;
+    }
+    img {
+      width: 70px;
+      height: 70px;
+      padding: 10px;
+    }
+    h2 {
+      color: $darkText;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 10px 0;
+      padding: 0 35px;
+    }
+    p {
+      color: $lightText;
+      font-weight: 100;
+      line-height: 25px;
+      @include respond(mobile) {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+  }
+  .border {
+    border-right: 2px solid $lightBorder;
+  }
+}
+.question {
+  width: 80%;
+  min-height: 100px;
+  padding: 0 25px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid $lightBorder;
+  position: relative;
+  line-height: 35px;
+  @include respond(tablet) {
+    width: 90%;
+  }
+  @include respond(mobile) {
+    width: 90%;
+    min-height: 70px;
+    line-height: 20px;
+  }
+
+  h2 {
+    width: 100%;
+    color: $darkText;
+    font-size: 22px;
+    font-weight: bolder;
+    padding: 20px 0;
+    @include respond(tablet) {
+      font-size: 18px;
+    }
+    @include respond(mobile) {
+      font-size: 16px;
+      padding: 10px 0;
+    }
+  }
+  p {
+    color: $lightText;
+    font-size: 17px;
+    font-weight: 100;
+    padding: 5px 0;
+    @include respond(tablet) {
+      font-size: 16px;
+    }
+    @include respond(mobile) {
+      font-size: 14px;
+    }
+  }
+  &__ask {
+    position: absolute;
+    right: 5px;
+    top: 0px;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-top: 15px;
+    color: $lightText;
+    @include respond(mobile) {
+      font-size: 15px;
+    }
+    &:hover {
+      color: $mainCol;
+    }
+  }
+}

@@ -1,0 +1,105 @@
+
+<form class="form" *ngIf="isLogin"
+    [formGroup]="authForm">
+    <button class="closeForm" mat-icon-button matTooltip="Basic"
+        mat-dialog-close>
+        <mat-icon>close</mat-icon>
+    </button>
+    <h2>Вхід в кабінет</h2>
+    <div class="form-group">
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>*Ваш email</mat-label>
+            <input formControlName="email"
+                matInput type="email">
+        </mat-form-field>
+    </div>
+
+
+    <div class="form-group">
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>*Ваш password</mat-label>
+            <input formControlName="password"
+                matInput [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)=" hide=!hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+
+    <button mat-raised-button (click)="loginUser()"
+        [disabled]="authForm.invalid"
+        type="submit" color="primary">УВІЙТИ В КАБІНЕТ</button>
+    <button mat-button (click)="isLogin=!isLogin">Зареєструватись</button>
+</form>
+
+<form class="form" *ngIf="!isLogin"
+    [formGroup]="registForm">
+    <button class="closeForm" mat-icon-button matTooltip="Basic"
+        mat-dialog-close>
+        <mat-icon>close</mat-icon>
+    </button>
+    <h2>Зареєструватись</h2>
+    <div class="form-group-half">
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>Ваше І'мя</mat-label>
+            <input formControlName="firstN"
+                matInput type="text">
+        </mat-form-field>
+    </div>
+    <div class="form-group-half">
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>Ваша фамілія</mat-label>
+            <input formControlName="lastN"
+                matInput type="text">
+        </mat-form-field>
+    </div>
+    <div class="form-group">
+        <mat-form-field appearance="outline" color="primary"
+            class="example-full-width">
+            <mat-label>Ваш телефон</mat-label>
+            <span matPrefix>+38 &nbsp;</span>
+            <input type="tel" matInput formControlName="phone"
+                placeholder="063 220 22 11">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="form-group">
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>Ваш email</mat-label>
+            <input formControlName="email"
+                matInput type="email">
+        </mat-form-field>
+    </div>
+
+    <div class="form-group-half">
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>Пароль</mat-label>
+            <input formControlName="password"
+                matInput [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)=" hide=!hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+
+    <div class="form-group-half">
+        <mat-form-field appearance="outline" color="primary">
+            <mat-label>Повторіть пароль</mat-label>
+            <input formControlName="repassword"
+                matInput [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)=" hide=!hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-error *ngIf="checkError">
+            Password mismatch
+        </mat-error>
+    </div>
+    <mat-checkbox class="example-margin" formControlName="checked" color="primary">Я погоджуюсь з
+        <a [routerLink]="[ '/offerta' ]">Правилами користування</a>
+    </mat-checkbox>
+    <button mat-raised-button (click)="registerUser()"
+        [disabled]="registForm.invalid"
+        type="submit" color="primary">ЗАРЕЄСТРУВАТИСЬ</button>
+    <button mat-button (click)="isLogin=!isLogin">Ви зареєстровані?<span>Увійти</span></button>
+</form>

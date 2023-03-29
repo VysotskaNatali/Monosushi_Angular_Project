@@ -1,0 +1,64 @@
+@import "../../shared/styles/variables";
+@import "../../shared/styles/base";
+@import "../../shared/styles/mixins/media";
+
+h2 {
+  width: 100%;
+  font-size: 25px;
+  font-weight: bolder;
+  color: $darkText;
+  text-align: center;
+  @include respond(mobile) {
+    margin: 10px 0;
+    font-size: 18px;
+  }
+}
+span {
+  font-weight: 900;
+}
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.form-group {
+  width: 100%;
+}
+.form-group-half {
+  width: 49%;
+}
+.mat-form-field,
+.mat-raised-button,
+.mat-button {
+  width: 100%;
+  height: 60px;
+  margin: 15px 0;
+  font-size: 18px;
+  color: $darkText;
+  font-weight: 400;
+  @include respond(mobile) {
+    height: 40px;
+    font-size: 12px !important;
+    margin: 10px auto;
+  }
+}
+.mat-raised-button:disabled {
+  background-color: #d4e6f5;
+}
+.mat-error {
+  text-align: center;
+}
+.closeForm {
+  margin-left: 90%;
+}
+mat-checkbox {
+  margin: 15px 0;
+}
+mat-checkbox a {
+  text-decoration: none;
+  color: $darkText;
+  font-weight: 400;
+  &:hover {
+    color: $mainCol;
+  }
+}
